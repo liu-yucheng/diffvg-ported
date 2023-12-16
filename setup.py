@@ -37,7 +37,10 @@ class Build(build_ext):
             include_path = info['include']
             cmake_args = ['-DCMAKE_LIBRARY_OUTPUT_DIRECTORY=' + extdir,
                           '-DPYTHON_LIBRARY=' + os.path.join(get_config_var('LIBDEST'), '..', 'libs'),
-                          '-DPYTHON_INCLUDE_PATH=' + include_path]
+                          # '-DPYTHON_INCLUDE_PATH=' + include_path,
+                          '-DPYTHON_INCLUDE_PATH=' + os.path.join(get_config_var('LIBDEST'), '..', 'include'),
+                          '-DPYTHON_EXECUTABLE:FILEPATH=' + os.path.join(get_config_var('LIBDEST'), '..'),
+                          '-DPYTHON_EXECUTABLE=' + os.path.join(get_config_var('LIBDEST'), '..', 'python.exe')]
 
             cfg = 'Debug' if self.debug else 'Release'
             build_args = ['--config', cfg]
