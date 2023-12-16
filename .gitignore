@@ -1,4 +1,5 @@
 build
+!build/Directory.Build.props
 apps/results
 apps/files
 apps/__pycache__
